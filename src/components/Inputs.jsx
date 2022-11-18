@@ -13,7 +13,6 @@ const Inputs = () => {
     // debugger
     const input = useSelector((state) => state.input.input)
     
-    console.log(input)
     const dispatch = useDispatch()
 
 
@@ -29,7 +28,10 @@ const Inputs = () => {
             <Input 
             placeholder='goal'
             value={input}
-            onChange={value => dispatch(updateInput(value))}
+            onInput = {e => {
+                dispatch(updateInput(e.target.value))
+                console.log(e.target.value)
+            }}
             />
             
             <Text>{input}</Text>
