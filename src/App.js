@@ -11,6 +11,7 @@ import {
 } from '@chakra-ui/react';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 import Form from './components/Form';
+import Goals from './components/Goals';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <ColorModeSwitcher justifySelf="flex-end" />
           <VStack spacing={8}>            
             <Form />
+            <Goals />
           </VStack>
         </Grid>
       </Box>
