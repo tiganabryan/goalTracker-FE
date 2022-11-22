@@ -1,19 +1,24 @@
 import React from 'react'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { goals } from '../redux/slices/goalsSlice'
+import { goals, addGoal } from '../redux/slices/goalsSlice'
 
 import { Text } from '@chakra-ui/react'
 
 
 const Goals = () => {
+    // debugger
     const goals = useSelector((state) => state.goals)
-    goals.map((goal) => console.log(goal.text))
+    // debugger
+    goals.map((goal, index) => console.log(goal.input, index))
+    // debugger
   return (
     <React.Fragment>
         <Text>your goals:</Text>
-        {goals.map((goal) => (
-            <Text>{goal.text}</Text>
+        {goals.map((goal, index) => (
+            <React.Fragment>
+                <Text key={index}>{goal.id}. {goal.input}</Text>
+            </React.Fragment>
         ))}
     </React.Fragment>
   )
