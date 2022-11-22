@@ -36,7 +36,7 @@ const Form = () => {
         type='submit'
         // onClick={handleSubmit} 
         colorScheme='purple'
-        mt="2rem"
+        mt="1rem"
         >
           add
         </Button>

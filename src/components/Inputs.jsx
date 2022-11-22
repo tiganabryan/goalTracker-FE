@@ -33,7 +33,7 @@ const Inputs = () => {
             }}
             />
             
-            <Text>{input}</Text>
+            {/* <Text>{input}</Text> */}
         </React.Fragment>
     )
 }

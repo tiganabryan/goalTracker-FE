@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { goals, addGoal } from '../redux/slices/goalsSlice'
 
 import { Text } from '@chakra-ui/react'
+import { MinusIcon } from '@chakra-ui/icons'
+
 
 
 const Goals = () => {
@@ -17,7 +19,8 @@ const Goals = () => {
         <Text>your goals:</Text>
         {goals.map((goal, index) => (
             <React.Fragment>
-                <Text key={index}>{goal.id}. {goal.input}</Text>
+                <Text key={index}>{index+1}. {goal.input}</Text> 
+                {/* <MinusIcon /> */}
             </React.Fragment>
         ))}
     </React.Fragment>
