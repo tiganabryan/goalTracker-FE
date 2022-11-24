@@ -26,13 +26,16 @@ export const goalsSlice = createSlice({
   initialState,
   reducers: {
     addGoal: (state, action) => {
-        const input = action.payload
         state.push(action.payload)
+      },
+      deleteGoal: (state, action) => {
+        state.filter((goal) => goal.id != action.payload)
+        console.log(state)
       }
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { addGoal } = goalsSlice.actions
+export const { addGoal, deleteGoal } = goalsSlice.actions
 
 export default goalsSlice.reducer

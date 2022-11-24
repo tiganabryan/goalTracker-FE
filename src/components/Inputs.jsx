@@ -27,7 +27,7 @@ const Inputs = () => {
             <Input 
             placeholder='goal'
             value={input}
-            onInput = {e => {
+            onChange = {e => {
                 dispatch(updateInput(e.target.value))
                 console.log(e.target.value)
             }}
