@@ -24,7 +24,6 @@ function App() {
         <Grid minH="100vh" p={3}>
           <ColorModeSwitcher justifySelf="flex-end" />
           <VStack spacing={8}>            
-            <h1>{message}</h1>
             <Form />
             <Goals />
           </VStack>
