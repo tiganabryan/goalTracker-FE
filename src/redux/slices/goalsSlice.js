@@ -29,7 +29,7 @@ export const goalsSlice = createSlice({
         state.push(action.payload)
       },
       deleteGoal: (state, action) => {
-        state.filter((goal) => goal.id != action.payload)
+        state.filter((goal) => goal.id !== action.payload)
         console.log(state)
       }
   },

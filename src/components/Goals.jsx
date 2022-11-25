@@ -1,5 +1,7 @@
 import React from 'react'
+import axios from 'axios'
 import './Goals.css'
+import { useState, useEffect } from 'react'
 
 import { useSelector, useDispatch } from 'react-redux'
 import { goals, addGoal, deleteGoal } from '../redux/slices/goalsSlice'
@@ -10,6 +12,20 @@ import { MinusIcon } from '@chakra-ui/icons'
 
 
 const Goals = () => {
+    const log = console.log
+
+    const [dbGoals, setDbGoals] = useState([])
+    log(dbGoals)
+
+    async function fetchData() {
+        const goals = await axios.get(`http://localhost:3000/goals`)
+        setDbGoals(goals.data)
+    }
+
+    useEffect(() => {
+        fetchData()    
+    }, [])
+    
     // debugger
     const goals = useSelector((state) => state.goals)
     // debugger
@@ -25,8 +41,8 @@ const Goals = () => {
     }
   return (
     <React.Fragment>
-        <Text>your goals:</Text>
-        {goals.map((goal, index) => (
+        <Text fontSize='4xl' className='yourGoalsText' fontWeight={600}>your goals:</Text>
+        {/* {goals.map((goal, index) => (
             <React.Fragment>
                 <Text 
                 key={index}
@@ -40,10 +56,19 @@ const Goals = () => {
                 >
                     
                     {index+1}. {goal.input}
-                </Text> 
+                </Text>  */}
                 {/* <MinusIcon className='minus-icon' /> */}
-            </React.Fragment>
-        ))}
+                <ol>
+                {dbGoals.map((goal) => (
+                    <li key={goal.id}>
+                        <Text fontWeight={700}>{goal.input}.</Text>
+                        <Text mb={3}>achieved? {goal.achieved.toString()}</Text>
+                    </li>
+                ))}</ol>
+            {/* </React.Fragment> */}
+        {/* ) */}
+        {/* ) */}
+    {/* } */}
     </React.Fragment>
   )
 }
