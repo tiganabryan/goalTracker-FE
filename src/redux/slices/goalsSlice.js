@@ -29,7 +29,8 @@ export const goalsSlice = createSlice({
         state.push(action.payload)
       },
       deleteGoal: (state, action) => {
-        state.filter((goal) => goal.id != action.payload)
+        // state.filter((goal) => goal.id != action.payload)
+        state.splice(state.findIndex((goal) => goal.id === action.payload), 1);
         console.log(state)
       }
   },

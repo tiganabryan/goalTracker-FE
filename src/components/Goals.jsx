@@ -20,29 +20,29 @@ const Goals = () => {
     const deleteGoal = (id) => {
         console.log(id)
         dispatch(deleteGoal(id))
-        // goals.filter((goal) => goal.id != id)
         // console.log(goals)
     }
   return (
     <React.Fragment>
-        <Text>your goals:</Text>
-        {goals.map((goal, index) => (
-            <React.Fragment>
-                <Text 
-                key={index}
-                // onDoubleClick={(goal) => deleteGoal(goal.id)}
-                onDoubleClick = {goal => {
-                    // dispatch(deleteGoal(goal.id))
-                    console.log(goal)
-                    console.log(goal.id)
-                }}
-                // className='goal-text'
-                >
-                    
-                    {index+1}. {goal.input}
-                </Text> 
-                {/* <MinusIcon className='minus-icon' /> */}
-            </React.Fragment>
+        <Text
+        fontSize="3xl"
+        fontWeight={600}
+        >your goals:</Text>
+            {goals.map((goal, index) => (
+                    <li 
+                    key={index}
+                    onDoubleClick = {goal => {
+                        // dispatch(deleteGoal(goal.id))
+                        console.log(goal)
+                        console.log(goal.target.textContent)
+                    }}
+                    className='goal-text'
+                    >
+                        
+                        {goal.input}
+                    </li> 
+                    // {/* <MinusIcon className='minus-icon' /> */}
+            
         ))}
     </React.Fragment>
   )
