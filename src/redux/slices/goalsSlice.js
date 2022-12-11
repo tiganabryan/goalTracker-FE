@@ -11,7 +11,7 @@ const initialState = [
     },
     {
         id: 2,
-        input: 'in bed by 11:15',
+        input: 'in bed by 11:00',
         achieved: true
         },
     {

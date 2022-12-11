@@ -14,18 +14,22 @@ import { ColorModeSwitcher } from './ColorModeSwitcher';
 import Form from './components/Form';
 import Goals from './components/Goals';
 
+import axios from 'axios'
+
 function App() {
   const log = console.log
     
   const [data, setData] = useState('');
 
   useEffect(() => {
-    fetch("/api")
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data.message)
-        console.log(data)
-      })
+    axios.get('/api')
+  .then((res) => {
+    setData(res.data.message)
+    log(res.data.message);
+  })
+  .catch(function (error) {
+    log(`ERROR: ${error}`);
+  });
   }, []);
 
   return (
