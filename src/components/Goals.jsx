@@ -12,6 +12,9 @@ import { MinusIcon } from '@chakra-ui/icons'
 const Goals = () => {
     // debugger
     const goals = useSelector((state) => state.goals)
+    // goals.map((goal) => {
+    //     console.log(goal)
+    //   })
     // debugger
     const dispatch = useDispatch();
     // goals.map((goal, index) => console.log(goal.input, index))
