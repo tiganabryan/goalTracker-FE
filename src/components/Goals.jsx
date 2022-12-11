@@ -17,11 +17,12 @@ const Goals = () => {
     // goals.map((goal, index) => console.log(goal.input, index))
     // debugger
 
-    const deleteGoal = (id) => {
-        console.log(id)
-        dispatch(deleteGoal(id))
-        // console.log(goals)
-    }
+    // const deleteGoal = (id) => {
+    //     console.log(id)
+    //     dispatch(deleteGoal(id))
+    //     // console.log(goals)
+    // }
+
   return (
     <React.Fragment>
         <Text
@@ -32,9 +33,9 @@ const Goals = () => {
                     <li 
                     key={index}
                     onDoubleClick = {goal => {
-                        // dispatch(deleteGoal(goal.id))
-                        console.log(goal)
-                        console.log(goal.target.textContent)
+                        dispatch(deleteGoal(goal.target.textContent))
+                        // console.log(goal)
+                        // console.log(goal.target.textContent)
                     }}
                     className='goal-text'
                     >

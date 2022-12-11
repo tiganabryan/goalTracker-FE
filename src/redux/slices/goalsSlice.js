@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, current } from '@reduxjs/toolkit'
 import input from "./inputSlice"
 
 // const addGoal
@@ -30,8 +30,9 @@ export const goalsSlice = createSlice({
       },
       deleteGoal: (state, action) => {
         // state.filter((goal) => goal.id != action.payload)
-        state.splice(state.findIndex((goal) => goal.id === action.payload), 1);
-        console.log(state)
+        // state.splice(state.findIndex((goal) => goal.id === action.payload), 1);
+        // goal.target.textContent
+        console.log(current(state))
       }
   },
 })
