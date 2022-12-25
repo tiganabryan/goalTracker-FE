@@ -51,18 +51,25 @@ const Goals = () => {
       </Text>
 
       {data.map((goal, index) => (
-        <li
+        <Text
           key={index}
-          onDoubleClick={goal => {
-            dispatch(deleteGoal(goal.target.textContent));
-            // console.log(goal)
-            // console.log(goal.target.textContent)
-          }}
           className="goal-text"
+          fontSize="1xl"
+          pb={0}
+          onDoubleClick={() => {
+            axios
+              .delete(`/api/goalTracker/${goal._id}`)
+              .then(function (res) {
+                log(res);
+              })
+              .catch(function (err) {
+                log(err);
+              });
+          }}
         >
           {goal.text}
-        </li>
-        // {/* <MinusIcon className='minus-icon' /> */}
+          {/* <MinusIcon className="minus-icon" onClick={e => log(e.target)} /> */}
+        </Text>
       ))}
     </React.Fragment>
   );
