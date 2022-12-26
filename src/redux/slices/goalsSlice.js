@@ -6,6 +6,7 @@ import {
 } from '@reduxjs/toolkit';
 import input from './inputSlice';
 
+const log = console.log;
 const url = 'http://localhost:5000/api/goalTracker';
 
 const initialState = {
@@ -18,6 +19,15 @@ export const getGoals = createAsyncThunk('goals/getGoals', async thunkAPI => {
   return res;
 });
 
+// export const deleteGoal = createAsyncThunk(
+//   'goals/deleteGoal',
+//   async thunkAPI => {
+//     const res = await fetch(url).then(data => data.json());
+//     return res;
+//   }
+// );
+// use RTK Query
+
 export const goalsSlice = createSlice({
   name: 'goals',
   initialState,
@@ -25,13 +35,11 @@ export const goalsSlice = createSlice({
     // addGoal: (state, action) => {
     //   state.push(action.payload);
     // },
-    // deleteGoal: (state, action) => {
-    //   const goalId = action.payload;
-    //   state = state.filter(goal => goal.input !== goalId);
-    //   // console.log(state.map((goal) => goal.input))
-    //   // console.log(current(state))
-    //   return console.log(state);
-    // },
+    deleteGoal: (state, action) => {
+      log(current(state.goals));
+      log(current(state).goals.filter(goal => goal._id !== action.payload));
+      // return console.log(state);
+    },
   },
   extraReducers: {
     [getGoals.pending]: state => {
@@ -48,7 +56,7 @@ export const goalsSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { addGoal, deleteGoal } = goalsSlice.actions;
+export const { addGoal } = goalsSlice.actions;
 // export const goalsReducer = goalsSlice.reducer;
 
 export default goalsSlice.reducer;

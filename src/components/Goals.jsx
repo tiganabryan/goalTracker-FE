@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   goals,
   addGoal,
-  deleteGoal,
+  // deleteGoal,
   getGoals,
 } from '../redux/slices/goalsSlice';
 
@@ -21,30 +21,31 @@ const log = console.log;
 const Goals = () => {
   const [data, setData] = useState([]);
 
-  useEffect(() => {
-    axios
-      .get('/api/goalTracker')
-      .then(res => {
-        setData(res.data);
-        log(res.data);
-      })
-      .catch(function (error) {
-        log(`ERROR: ${error}`);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get('/api/goalTracker')
+  //     .then(res => {
+  //       setData(res.data);
+  //       log(res.data);
+  //     })
+  //     .catch(function (error) {
+  //       log(`ERROR: ${error}`);
+  //     });
+  // }, []);
 
   useEffect(() => {
     dispatch(getGoals());
   }, []);
 
   // debugger
-  const goals = useSelector(state => state.goals);
+  const goals = useSelector(state => state.goals.goals);
   // goals.map((goal) => {
   //     console.log(goal)
   //   })
   // debugger
   const dispatch = useDispatch();
-  dispatch(getGoals);
+  // dispatch(deleteGoal());
+  // dispatch(getGoals);
   // goals.map((goal, index) => console.log(goal.input, index))
   // debugger
 
@@ -56,26 +57,18 @@ const Goals = () => {
 
   return (
     <React.Fragment>
+      {/* <Text>{goals[0].text}</Text> */}
       <Text fontSize="3xl" fontWeight={600}>
         your goals:
       </Text>
 
-      {data.map((goal, index) => (
+      {goals.map((goal, index) => (
         <Text
           key={index}
           className="goal-text"
           fontSize="1xl"
           pb={0}
-          onDoubleClick={() => {
-            axios
-              .delete(`/api/goalTracker/${goal._id}`)
-              .then(function (res) {
-                log(res);
-              })
-              .catch(function (err) {
-                log(err);
-              });
-          }}
+          // onDoubleClick={() => dispatch(deleteGoal('63a9e9285fa88951f4ba538e'))}
         >
           {goal.text}
           {/* <MinusIcon className="minus-icon" onClick={e => log(e.target)} /> */}
