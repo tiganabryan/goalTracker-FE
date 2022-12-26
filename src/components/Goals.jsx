@@ -5,7 +5,12 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { goals, addGoal, deleteGoal } from '../redux/slices/goalsSlice';
+import {
+  goals,
+  addGoal,
+  deleteGoal,
+  getGoals,
+} from '../redux/slices/goalsSlice';
 
 import { Text } from '@chakra-ui/react';
 import { MinusIcon } from '@chakra-ui/icons';
@@ -28,6 +33,10 @@ const Goals = () => {
       });
   }, []);
 
+  useEffect(() => {
+    dispatch(getGoals());
+  }, []);
+
   // debugger
   const goals = useSelector(state => state.goals);
   // goals.map((goal) => {
@@ -35,6 +44,7 @@ const Goals = () => {
   //   })
   // debugger
   const dispatch = useDispatch();
+  dispatch(getGoals);
   // goals.map((goal, index) => console.log(goal.input, index))
   // debugger
 
