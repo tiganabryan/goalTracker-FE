@@ -14,9 +14,7 @@ const initialState = {
 };
 
 export const getGoals = createAsyncThunk('goals/getGoals', async thunkAPI => {
-  const res = await fetch('https://jsonplaceholder.typicode.com/posts').then(
-    data => data.json()
-  );
+  const res = await fetch(url).then(data => data.json());
   return res;
 });
 
