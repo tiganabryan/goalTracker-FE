@@ -68,7 +68,9 @@ const Goals = () => {
           className="goal-text"
           fontSize="1xl"
           pb={0}
-          onDoubleClick={() => dispatch(deleteGoal('63a9e91e5fa88951f4ba538c'))}
+          onDoubleClick={() => {
+            dispatch(deleteGoal(goal._id));
+          }}
         >
           {goal.text}
           {/* <MinusIcon className="minus-icon" onClick={e => log(e.target)} /> */}
