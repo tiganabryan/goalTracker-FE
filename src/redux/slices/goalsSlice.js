@@ -1,10 +1,4 @@
-import {
-  createAsyncThunk,
-  createSlice,
-  current,
-  original,
-} from '@reduxjs/toolkit';
-import input from './inputSlice';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 import axios from 'axios';
 
@@ -21,6 +15,20 @@ export const getGoals = createAsyncThunk('goals/getGoals', async () => {
   return res;
 });
 
+export const addGoal = createAsyncThunk('goals/addGoal', async text => {
+  const params = new URLSearchParams();
+  params.append('text', text);
+
+  axios
+    .post('/api/goalTracker', params)
+    .then(function (res) {
+      console.log(res);
+    })
+    .catch(function (err) {
+      log(err);
+    });
+});
+
 export const deleteGoal = createAsyncThunk('goals/deleteGoal', async id => {
   axios({
     method: 'delete',
@@ -35,29 +43,14 @@ export const deleteGoal = createAsyncThunk('goals/deleteGoal', async id => {
     });
 });
 
-// export const deleteGoal = createAsyncThunk(
-//   'goals/deleteGoal',
-//   async thunkAPI => {
-//     const res = await fetch(url).then(data => data.json());
-//     return res;
-//   }
-// );
-// use RTK Query
+// RTK Query?
 
 export const goalsSlice = createSlice({
   name: 'goals',
   initialState,
-  reducers: {
-    // addGoal: (state, action) => {
-    //   state.push(action.payload);
-    // },
-    deleteGoal: (state, action) => {
-      log(current(state.goals));
-      log(current(state).goals.filter(goal => goal._id !== action.payload));
-      // return console.log(state);
-    },
-  },
+  reducers: {},
   extraReducers: {
+    // get goals
     [getGoals.pending]: state => {
       state.loading = true;
     },
@@ -69,6 +62,19 @@ export const goalsSlice = createSlice({
       state.loading = false;
     },
 
+    // add goals
+    [addGoal.pending]: state => {
+      state.loading = true;
+    },
+    [addGoal.fulfilled]: (state, { payload }) => {
+      state.loading = false;
+      state.goals = payload;
+    },
+    [addGoal.rejected]: state => {
+      state.loading = false;
+    },
+
+    // delete goals
     [deleteGoal.pending]: state => {
       state.loading = true;
     },
@@ -81,10 +87,4 @@ export const goalsSlice = createSlice({
   },
 });
 
-// Action creators are generated for each case reducer function
-export const { addGoal } = goalsSlice.actions;
-// export const goalsReducer = goalsSlice.reducer;
-
 export default goalsSlice.reducer;
-
-// console.log(goalId)

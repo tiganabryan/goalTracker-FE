@@ -1,16 +1,10 @@
 import React from 'react';
 import './Goals.css';
 
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useEffect } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
-import {
-  goals,
-  addGoal,
-  deleteGoal,
-  getGoals,
-} from '../redux/slices/goalsSlice';
+import { deleteGoal, getGoals } from '../redux/slices/goalsSlice';
 
 import { Text } from '@chakra-ui/react';
 import { MinusIcon } from '@chakra-ui/icons';
@@ -19,50 +13,24 @@ import { Spinner } from '@chakra-ui/react';
 const log = console.log;
 
 const Goals = () => {
-  const [data, setData] = useState([]);
-
-  // useEffect(() => {
-  //   axios
-  //     .get('/api/goalTracker')
-  //     .then(res => {
-  //       setData(res.data);
-  //       log(res.data);
-  //     })
-  //     .catch(function (error) {
-  //       log(`ERROR: ${error}`);
-  //     });
-  // }, []);
-
-  // debugger
   const dispatch = useDispatch();
   const goals = useSelector(state => state.goals.goals);
 
-  useEffect(() => {
-    dispatch(getGoals());
-  }, [goals]);
-  // goals.map((goal) => {
-  //     console.log(goal)
-  //   })
-  // debugger
-  // dispatch(deleteGoal('63a9e91e5fa88951f4ba538c'));
-  // dispatch(getGoals);
-  // goals.map((goal, index) => console.log(goal.input, index))
-  // debugger
-
-  // const deleteGoal = (id) => {
-  //     console.log(id)
-  //     dispatch(deleteGoal(id))
-  //     // console.log(goals)
-  // }
+  useEffect(
+    () => {
+      dispatch(getGoals());
+    },
+    []
+    // [goals] causing hundreds of requests..? useEffect starts acting like there is no dependency array
+  );
 
   return (
     <React.Fragment>
-      {/* <Text>{goals[0].text}</Text> */}
       <Text fontSize="3xl" fontWeight={600}>
         your goals:
       </Text>
 
-      {goals.map((goal, index) => (
+      {goals?.map((goal, index) => (
         <Text
           key={index}
           className="goal-text"

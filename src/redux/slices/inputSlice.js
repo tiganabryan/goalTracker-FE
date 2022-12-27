@@ -1,20 +1,19 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   input: '',
-}
+};
 
 export const inputSlice = createSlice({
   name: 'input',
   initialState,
   reducers: {
     updateInput: (state, action) => {
-      state.input = action.payload
+      state.input = action.payload;
     },
   },
-})
+});
 
-// Action creators are generated for each case reducer function
-export const { updateInput } = inputSlice.actions
+export const { updateInput } = inputSlice.actions;
 
-export default inputSlice.reducer
+export default inputSlice.reducer;
