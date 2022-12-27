@@ -16,13 +16,12 @@ const initialState = {
   loading: false,
 };
 
-export const getGoals = createAsyncThunk('goals/getGoals', async thunkAPI => {
+export const getGoals = createAsyncThunk('goals/getGoals', async () => {
   const res = await fetch(url).then(data => data.json());
   return res;
 });
 
 export const deleteGoal = createAsyncThunk('goals/deleteGoal', async id => {
-  debugger;
   axios({
     method: 'delete',
     url: `http://localhost:5000/api/goalTracker/${id}`,
@@ -33,9 +32,6 @@ export const deleteGoal = createAsyncThunk('goals/deleteGoal', async id => {
     })
     .catch(err => {
       log(err);
-      if (!id) {
-        log(id);
-      }
     });
 });
 

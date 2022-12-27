@@ -33,17 +33,17 @@ const Goals = () => {
   //     });
   // }, []);
 
+  // debugger
+  const dispatch = useDispatch();
+  const goals = useSelector(state => state.goals.goals);
+
   useEffect(() => {
     dispatch(getGoals());
-  }, []);
-
-  // debugger
-  const goals = useSelector(state => state.goals.goals);
+  }, [goals]);
   // goals.map((goal) => {
   //     console.log(goal)
   //   })
   // debugger
-  const dispatch = useDispatch();
   // dispatch(deleteGoal('63a9e91e5fa88951f4ba538c'));
   // dispatch(getGoals);
   // goals.map((goal, index) => console.log(goal.input, index))
