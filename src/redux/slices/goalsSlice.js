@@ -6,6 +6,8 @@ import {
 } from '@reduxjs/toolkit';
 import input from './inputSlice';
 
+import axios from 'axios';
+
 const log = console.log;
 const url = 'http://localhost:5000/api/goalTracker';
 
@@ -17,6 +19,18 @@ const initialState = {
 export const getGoals = createAsyncThunk('goals/getGoals', async thunkAPI => {
   const res = await fetch(url).then(data => data.json());
   return res;
+});
+
+export const deleteGoal = createAsyncThunk('goals/deleteGoal', async id => {
+  axios({
+    method: 'delete',
+    url: `http://localhost:5000/api/goalTracker/${id}`,
+    responseType: 'json',
+  })
+    .then(function () {
+      log(`deletion of goal ${id} successful`);
+    })
+    .catch(err => log(err));
 });
 
 // export const deleteGoal = createAsyncThunk(
@@ -50,6 +64,16 @@ export const goalsSlice = createSlice({
       state.goals = payload;
     },
     [getGoals.rejected]: state => {
+      state.loading = false;
+    },
+
+    [deleteGoal.pending]: state => {
+      state.loading = true;
+    },
+    [deleteGoal.fulfilled]: state => {
+      state.loading = false;
+    },
+    [deleteGoal.rejected]: state => {
       state.loading = false;
     },
   },

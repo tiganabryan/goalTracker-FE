@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   goals,
   addGoal,
-  // deleteGoal,
+  deleteGoal,
   getGoals,
 } from '../redux/slices/goalsSlice';
 
@@ -44,7 +44,7 @@ const Goals = () => {
   //   })
   // debugger
   const dispatch = useDispatch();
-  // dispatch(deleteGoal());
+  // dispatch(deleteGoal('63a9e91e5fa88951f4ba538c'));
   // dispatch(getGoals);
   // goals.map((goal, index) => console.log(goal.input, index))
   // debugger
@@ -68,7 +68,7 @@ const Goals = () => {
           className="goal-text"
           fontSize="1xl"
           pb={0}
-          // onDoubleClick={() => dispatch(deleteGoal('63a9e9285fa88951f4ba538e'))}
+          onDoubleClick={() => dispatch(deleteGoal('63a9e91e5fa88951f4ba538c'))}
         >
           {goal.text}
           {/* <MinusIcon className="minus-icon" onClick={e => log(e.target)} /> */}
