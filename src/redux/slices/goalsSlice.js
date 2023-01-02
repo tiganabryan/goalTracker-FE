@@ -3,7 +3,8 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const log = console.log;
-const url = 'http://localhost:5000/api/goalTracker';
+// const url = 'http://localhost:5000/api/goalTracker';
+const url = 'https://goaltracker-tigana.onrender.com';
 
 const initialState = {
   goals: [],
