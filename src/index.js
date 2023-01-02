@@ -1,26 +1,29 @@
 import { ColorModeScript } from '@chakra-ui/react';
 import React, { StrictMode } from 'react';
-import { ChakraProvider } from '@chakra-ui/react'
+import { ChakraProvider } from '@chakra-ui/react';
 
 import * as ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
+import { disableReactDevTools } from '@fvilers/disable-react-devtools';
 
-import { store } from './redux/store'
-import { Provider } from 'react-redux'
+import { store } from './redux/store';
+import { Provider } from 'react-redux';
 
 const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container);
 
+if (process.eventNames.NODE_ENV === 'production') disableReactDevTools();
+
 root.render(
   <StrictMode>
     <ColorModeScript />
-      <ChakraProvider>
-        <Provider store={store}>
-          <App />
-        </Provider>
-      </ChakraProvider>
+    <ChakraProvider>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </ChakraProvider>
   </StrictMode>
 );
 
