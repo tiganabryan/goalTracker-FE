@@ -41,8 +41,7 @@ const Goals = () => {
             pb={0}
             onDoubleClick={() => {
               dispatch(deleteGoal(goal._id));
-              setTimeout(() => {}, '2000');
-              window.location.reload(true);
+              this.setState({});
             }}
           >
             {goal.text}
