@@ -10,6 +10,7 @@ import { Text } from '@chakra-ui/react';
 import { Tooltip } from '@chakra-ui/react';
 import { MinusIcon } from '@chakra-ui/icons';
 import { Spinner } from '@chakra-ui/react';
+import { CloseButton } from '@chakra-ui/react';
 
 const log = console.log;
 
@@ -46,6 +47,13 @@ const Goals = () => {
             }}
           >
             {goal.text}
+            <CloseButton
+              size="md"
+              onClick={() => {
+                dispatch(deleteGoal(goal._id));
+                dispatch(getGoals());
+              }}
+            />
             {/* <MinusIcon className="minus-icon" onClick={e => log(e.target)} /> */}
           </Text>
         </Tooltip>
