@@ -21,7 +21,7 @@ const Goals = () => {
     () => {
       dispatch(getGoals());
     },
-    []
+    [goals.length]
     // [goals] causing hundreds of renders..? useEffect starts acting like there is no dependency array
   );
 
