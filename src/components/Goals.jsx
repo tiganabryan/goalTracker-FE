@@ -41,7 +41,6 @@ const Goals = () => {
             pb={0}
             onDoubleClick={() => {
               dispatch(deleteGoal(goal._id));
-              dispatch(getGoals());
             }}
           >
             {goal.text}
