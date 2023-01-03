@@ -3,7 +3,7 @@ import { Text } from '@chakra-ui/react';
 
 const Header = () => {
   return (
-    <Text fontSize="large" fontWeight={700}>
+    <Text fontSize="4xl" fontWeight={700}>
       add a goal below
     </Text>
   );
