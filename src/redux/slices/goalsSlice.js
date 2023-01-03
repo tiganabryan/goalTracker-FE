@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const log = console.log;
 // const url = 'http://localhost:5000/api/goalTracker';
-const url = 'https://goaltracker-tigana.onrender.com';
+const url = 'https://goaltracker-api.onrender.com/api/goalTracker';
 
 const initialState = {
   goals: [],
@@ -33,7 +33,7 @@ export const addGoal = createAsyncThunk('goals/addGoal', async text => {
 export const deleteGoal = createAsyncThunk('goals/deleteGoal', async id => {
   axios({
     method: 'delete',
-    url: `http://localhost:5000/api/goalTracker/${id}`,
+    url: `${url}/${id}`,
     responseType: 'json',
   })
     .then(function () {
