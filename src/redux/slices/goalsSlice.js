@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const log = console.log;
 // const url = 'http://localhost:5000/api/goalTracker';
-const url = 'https://goaltracker-tigana.onrender.com/api/goalTracker';
+const url = 'https://goaltrackerapi-tigana.onrender.com/api/goalTracker';
 
 const initialState = {
   goals: [],
