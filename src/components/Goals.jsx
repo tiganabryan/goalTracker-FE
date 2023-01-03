@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { deleteGoal, getGoals } from '../redux/slices/goalsSlice';
 
 import { Text } from '@chakra-ui/react';
+import { Tooltip } from '@chakra-ui/react';
 import { MinusIcon } from '@chakra-ui/icons';
 import { Spinner } from '@chakra-ui/react';
 
@@ -31,18 +32,20 @@ const Goals = () => {
       </Text>
 
       {goals?.map((goal, index) => (
-        <Text
-          key={index}
-          className="goal-text"
-          fontSize="1xl"
-          pb={0}
-          onDoubleClick={() => {
-            dispatch(deleteGoal(goal._id));
-          }}
-        >
-          {goal.text}
-          {/* <MinusIcon className="minus-icon" onClick={e => log(e.target)} /> */}
-        </Text>
+        <Tooltip label="double click to delete">
+          <Text
+            key={index}
+            className="goal-text"
+            fontSize="1xl"
+            pb={0}
+            onDoubleClick={() => {
+              dispatch(deleteGoal(goal._id));
+            }}
+          >
+            {goal.text}
+            {/* <MinusIcon className="minus-icon" onClick={e => log(e.target)} /> */}
+          </Text>
+        </Tooltip>
       ))}
     </React.Fragment>
   );
