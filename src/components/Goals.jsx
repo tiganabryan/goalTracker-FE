@@ -16,7 +16,7 @@ const log = console.log;
 const Goals = () => {
   const dispatch = useDispatch();
   const goals = useSelector(state => state.goals.goals);
-  const [submit, setSubmit] = useState(false);
+  const [submit, setSubmit] = useState(0);
 
   useEffect(
     () => {
@@ -41,7 +41,7 @@ const Goals = () => {
             pb={0}
             onDoubleClick={() => {
               dispatch(deleteGoal(goal._id));
-              setSubmit(!submit);
+              setSubmit(submit + 1);
             }}
           >
             {goal.text}
