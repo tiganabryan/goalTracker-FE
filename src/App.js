@@ -4,6 +4,7 @@ import { ChakraProvider, Box, VStack, Grid, theme } from '@chakra-ui/react';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 import Form from './components/Form';
 import Goals from './components/Goals';
+import Header from './components/Header';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Grid minH="100vh" p={3}>
           <ColorModeSwitcher justifySelf="flex-end" />
           <VStack spacing={8}>
+            <Header />
             <Form />
             <Goals />
           </VStack>

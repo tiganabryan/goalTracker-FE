@@ -12,8 +12,7 @@ const Form = () => {
   const input = useSelector(state => state.input.input);
   const dispatch = useDispatch();
 
-  const handleSubmit = (e, text) => {
-    e.preventDefault();
+  const handleSubmit = text => {
     dispatch(addGoal(text));
   };
 
@@ -26,7 +25,7 @@ const Form = () => {
           type="submit"
           colorScheme="purple"
           mt="1rem"
-          onClick={() => handleSubmit(e, input)}
+          onClick={() => handleSubmit(input)}
         >
           add
         </Button>
