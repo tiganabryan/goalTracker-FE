@@ -32,7 +32,7 @@ const Goals = () => {
       </Text>
 
       {goals?.map((goal, index) => (
-        <Tooltip label="double click to delete" placement="top end">
+        <Tooltip label="double click to delete" placement="top-end">
           <Text
             key={index}
             className="goal-text"
