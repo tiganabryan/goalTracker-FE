@@ -54,7 +54,6 @@ const Goals = () => {
                 dispatch(getGoals());
               }}
             />
-            {/* <MinusIcon className="minus-icon" onClick={e => log(e.target)} /> */}
           </Text>
         </Tooltip>
       ))}
