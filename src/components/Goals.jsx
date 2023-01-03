@@ -1,7 +1,7 @@
 import React from 'react';
 import './Goals.css';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteGoal, getGoals } from '../redux/slices/goalsSlice';
@@ -16,13 +16,13 @@ const log = console.log;
 const Goals = () => {
   const dispatch = useDispatch();
   const goals = useSelector(state => state.goals.goals);
-  const submit = useSelector(state => state.goals.submit);
+  const [submit, setSubmit] = useState(false);
 
   useEffect(
     () => {
       dispatch(getGoals());
     },
-    []
+    [submit]
     // [goals] causing hundreds of renders..? useEffect starts acting like there is no dependency array
   );
 
@@ -41,6 +41,7 @@ const Goals = () => {
             pb={0}
             onDoubleClick={() => {
               dispatch(deleteGoal(goal._id));
+              setSubmit(!submit);
             }}
           >
             {goal.text}

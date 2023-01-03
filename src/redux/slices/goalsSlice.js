@@ -38,7 +38,6 @@ export const deleteGoal = createAsyncThunk('goals/deleteGoal', async id => {
   })
     .then(function () {
       log(`deletion of goal ${id} successful`);
-      getGoals();
     })
     .catch(err => {
       log(err);
