@@ -12,8 +12,9 @@ const Form = () => {
   const input = useSelector(state => state.input.input);
   const dispatch = useDispatch();
 
-  const handleSubmit = text => {
+  const handleSubmit = (text, toggleSubmit) => {
     dispatch(addGoal(text));
+    dispatch(toggleSubmit);
   };
 
   return (
