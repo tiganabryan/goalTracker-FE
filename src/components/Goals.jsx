@@ -16,7 +16,7 @@ const log = console.log;
 const Goals = () => {
   const dispatch = useDispatch();
   const goals = useSelector(state => state.goals.goals);
-  const submit = useSelector(state => state.submit.submit);
+  const submit = useSelector(state => state.submit);
 
   useEffect(
     () => {
