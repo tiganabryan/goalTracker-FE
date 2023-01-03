@@ -21,7 +21,7 @@ export const addGoal = createAsyncThunk('goals/addGoal', async text => {
   params.append('text', text);
 
   axios
-    .post('/api/goalTracker', params)
+    .post(url, params)
     .then(function (res) {
       console.log(res);
     })
