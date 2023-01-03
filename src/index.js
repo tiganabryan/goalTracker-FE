@@ -14,7 +14,7 @@ import { Provider } from 'react-redux';
 const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container);
 
-if (process?.env.NODE_ENV === 'production') disableReactDevTools();
+// if (process?.env.NODE_ENV === 'production') disableReactDevTools();
 
 root.render(
   <StrictMode>
