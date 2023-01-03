@@ -22,7 +22,7 @@ const Goals = () => {
     () => {
       dispatch(getGoals());
     },
-    [submit]
+    []
     // [goals] causing hundreds of renders..? useEffect starts acting like there is no dependency array
   );
 
@@ -41,7 +41,7 @@ const Goals = () => {
             pb={0}
             onDoubleClick={() => {
               dispatch(deleteGoal(goal._id));
-              dispatch(toggleSubmit());
+              window.location.reload(true);
             }}
           >
             {goal.text}
