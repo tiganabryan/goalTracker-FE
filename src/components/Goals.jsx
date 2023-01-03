@@ -41,7 +41,7 @@ const Goals = () => {
             pb={0}
             onDoubleClick={() => {
               dispatch(deleteGoal(goal._id));
-              this.setState({});
+              dispatch(getGoals());
             }}
           >
             {goal.text}
