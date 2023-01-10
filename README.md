@@ -1,3 +1,3 @@
-## [click here for the backend repo](https://github.com/tiganabryan/goalTrackerBE)
+## click [here](https://goaltracker-tigana.onrender.com/) to try it yourself!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## click [here](https://github.com/tiganabryan/goalTrackerBE) to view the backend repo.
